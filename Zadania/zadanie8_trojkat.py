@@ -30,3 +30,9 @@ if bok_a.isnumeric() and bok_b.isnumeric() and bok_c.isnumeric():
 
 else:
     print("Podales nieprawidlowe dane")
+
+#Review:
+#Bardzo fajnie rozwiązane, czysto. Można uprościć warunek
+# (bok_a == bok_b) and (bok_a == bok_c)
+# i napisać:
+# bok_a == bok_b == bok_c
