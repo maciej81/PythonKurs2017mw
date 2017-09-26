@@ -1,4 +1,4 @@
-# napisac w petli mozliwosci userowi 1. wyswietl do bazy 2. dodaj do bazy 3. usun z bazy itp
+# napisac w petli mozliwosci userowi 1. dodanie imienia, 2. usuniecie imienia, sprawdzenie czy jest w bazie, sprawdzdenie ilosci imion
 
 # wyswietla cala zawartosc listy
 def lista_wyswietl(imiona):
@@ -26,14 +26,28 @@ def lista_usun(imie, imiona):
     else:
         print(f"{imie} nie istnieje na liście")
 
+# sprawdza czy imie jest na liscie
+def lista_sprawdz(imie, imiona):
+    imie = imie.capitalize()
+    if imie in imiona:
+        print(f"{imie} jest na liście")
+    else:
+        print(f"{imie} nie istnieje na liście")
+
+# zwraca dlugosc listy
+def lista_dlugosc(imiona):
+    return(len(imiona))
+
 # wyswietla menu i czeka na input usera. zwraca wybrana wartosc
 # jezeli user poda litere albo wartosc inna niz w menu to nie konwertuje do int. Takie przypadki powinny wpasc do warunku else w glownej petli
 def wybor_menu():
     text_menu = "Co chcesz zrobić?\n" \
-           "1. Wyświetl zawartość listy\n" \
-           "2. Dodaj elementy do listy\n" \
-           "3. Usuń elementy z listy\n" \
-           "0. Koniec\n"
+        "1. Wyświetl zawartość listy\n" \
+        "2. Dodaj imię do listy\n" \
+        "3. Usuń imię z listy\n" \
+        "4. Sprawdź czy imię jest na liście\n" \
+        "5. Sprawdź ilość imion na liście\n" \
+        "0. Koniec\n"
 
     wybor = input(text_menu)
     if wybor.isnumeric():
@@ -56,6 +70,13 @@ while user_input:
     elif user_input == 3:
         imie = input("Podaj imię, które chcesz usunąć: ")
         lista_usun(imie, lista_imion)
+        user_input = wybor_menu()
+    elif user_input == 4:
+        imie = input("Podaj imię, które szukasz: ")
+        lista_sprawdz(imie, lista_imion)
+        user_input = wybor_menu()
+    elif user_input == 5:
+        print(f"Lista zawiera {lista_dlugosc(lista_imion)} elementów")
         user_input = wybor_menu()
     else:
         print("Nieprawidłowy wybór. Jeszcze raz")
