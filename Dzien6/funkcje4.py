@@ -5,4 +5,8 @@ def odwroc_input():
     zdanie = input("Podaj zdanie: ")
     return odwroc_str(zdanie)
 
-# print(odwroc_input())
+def main():
+    print(odwroc_input())
+
+if __name__ == '__main__':
+    main()

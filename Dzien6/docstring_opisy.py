@@ -20,3 +20,14 @@ def czy_palindrom(fraza:str):
         return True
 
 print(czy_palindrom("kajak"))
+
+#problem jest taki ze wykona wszystko z zaimportowanego modulu. nawet jezeli robisz import tylko jednej funckji
+#dlatego w importowanych modulach nie powinno byc zadnych operacji bo sie wykona
+#co zrobic aby tego uniknac - main :) czyli glowny program. to sie nie bedzie importowac, jezeli modul bedzie wykonywany
+#bezposrednio a nie jezeli bedzie importowany piszesz main i tabulacja
+#zmienna _name_ istnieje dla kazdego modulu.
+#do tego sie jeszcze pakuje kod do funckcji main() i pod tym ifem tylko main() sie wykonuje
+#do tego pliku, jak go uruchomisz w terminaly to sie python wywali. bo to pycharm sobie ustawil sciezki przy import
+# a sam python nie wie o tym. pycharm podstawia swoje foldery. Dla python trzeba ustawiac sciezki recznie...
+#mozna podac python path zmienna srodowiskowa w systemie
+#mozna dodac liste w kodzie
