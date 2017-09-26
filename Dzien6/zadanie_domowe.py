@@ -1,37 +1,39 @@
 # napisac w petli mozliwosci userowi 1. wyswietl do bazy 2. dodaj do bazy 3. usun z bazy itp
-# czeka na usera akcje i cos robi
 
-#chce czyscic output od czasu do czasu, uzyje do tego modulu os i 'cls'
+# wyswietla cala zawartosc listy
+def lista_wyswietl(imiona):
+    print("Wyswietlam całą listę")
+    if imiona == None:
+        print("Lista nie istnieje")
+    else:
+        if len(imiona) == 0:
+            print("Lista jest pusta")
+        else:
+            print(imiona)
 
-import os
+# dodaje imie do listy
+def lista_dodaj(imie, imiona):
+    print(f"Dodaję {imie} do listy")
+    imiona.append(imie.capitalize())
+    return imiona
 
-def clear():
-    os.system('cls')
+#usuwa imie z listy, poniewaz dodaj dziala jako imie.capitalize() tu musze tak usuwac
+def lista_usun(imie, imiona):
+    imie = imie.capitalize()
+    print(f"Usuwam {imie} z listy")
+    if imie in imiona:
+        imiona.remove(imie)
+    else:
+        print(f"{imie} nie istnieje na liście")
 
-#definicje funkcjo do modyfikacji/wyswietlania zawartosci list
-#na razie sam text - w celu sprawdzenia czy petla while dziala
-def lista_wyswietl():
-    print("Wyswietlam zawartość konkretnej listy")
-
-def lista_dodaj():
-    print("Dodaję zawartość do konkretnej listy")
-
-def lista_usun():
-    print("Usuwam zawartość z konkretnej listy")
-
-def usun_liste():
-    print("Usuwam całą listę")
-
-#wyswietla menu i czeka na input usera. zwraca wybrana wartosc
+# wyswietla menu i czeka na input usera. zwraca wybrana wartosc
+# jezeli user poda litere albo wartosc inna niz w menu to nie konwertuje do int. Takie przypadki powinny wpasc do warunku else w glownej petli
 def wybor_menu():
-    #na razie tego nie daje pozniej bede czekac na user input czy wysc do glownego menu. i wtedy to odkomentuje
-    #clear()
     text_menu = "Co chcesz zrobić?\n" \
-                "1. Wyświetl istniejące listy\n" \
-                "2. Dodaj elementy do listy\n" \
-                "3. Usuń elementy z listy\n" \
-                "4. Usuń całą listę\n" \
-                "0. Koniec\n"
+           "1. Wyświetl zawartość listy\n" \
+           "2. Dodaj elementy do listy\n" \
+           "3. Usuń elementy z listy\n" \
+           "0. Koniec\n"
 
     wybor = input(text_menu)
     if wybor.isnumeric():
@@ -39,26 +41,23 @@ def wybor_menu():
     else:
         return wybor
 
-# def wyjscie_menu():
-#     wybor = input("Czy wyjść do menu głównego (T/N)?: ")
-
-#glowna petla
+# glowna petla
+# na razie bedzie tylko jedna lista imion, potem pomysle jak dodawać wiele list
+lista_imion = []
 user_input = wybor_menu()
 while user_input:
     if user_input == 1:
-        lista_wyswietl()
+        lista_wyswietl(lista_imion)
         user_input = wybor_menu()
     elif user_input == 2:
-        lista_dodaj()
+        imie = input("Podaj imię, które chcesz dodać: ")
+        lista_dodaj(imie, lista_imion)
         user_input = wybor_menu()
     elif user_input == 3:
-        lista_usun()
-        user_input = wybor_menu()
-    elif user_input == 4:
-        usun_liste()
+        imie = input("Podaj imię, które chcesz usunąć: ")
+        lista_usun(imie, lista_imion)
         user_input = wybor_menu()
     else:
         print("Nieprawidłowy wybór. Jeszcze raz")
         user_input = wybor_menu()
-clear()
 print("Do widzenia")
